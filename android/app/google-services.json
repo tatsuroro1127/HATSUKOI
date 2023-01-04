@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "841668179533",
+    "project_id": "hatsukoi-f69f3",
+    "storage_bucket": "hatsukoi-f69f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841668179533:android:c5600093d10275e1b84e04",
+        "android_client_info": {
+          "package_name": "com.example.hatsukoi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841668179533-k6158sm41c8lu2v9qptqbnrautnci5a0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdUKT49PkedWMOQfInPS9rv8yz13BbsQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841668179533-k6158sm41c8lu2v9qptqbnrautnci5a0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
