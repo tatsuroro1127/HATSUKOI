@@ -1,17 +1,17 @@
-// ignore_for_file: slash_for_doc_comments, non_constant_identifier_names, camel_case_types, sort_child_properties_last, unused_local_variable, use_build_context_synchronously
+// ignore_for_file: camel_case_types, non_constant_identifier_names, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import '../../dictionary/dictionary_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class widget_htki002_Register extends StatefulWidget {
-  const widget_htki002_Register({super.key});
+class widget_htki003_mypage extends StatefulWidget {
+  const widget_htki003_mypage({super.key});
 
   @override
-  State<widget_htki002_Register> createState() => _widget_htki002_register();
+  State<widget_htki003_mypage> createState() => _widget_htki003_mypage();
 }
 
-class _widget_htki002_register extends State<widget_htki002_Register> {
+class _widget_htki003_mypage extends State<widget_htki003_mypage> {
   // 入力されたメールアドレス
   String input_mailAddress = "";
   // 入力されたパスワード
@@ -59,9 +59,9 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //「ログイン」テキスト
-                    const Text(
+                    Text(
                       MD003,
-                      style: TextStyle(
+                      style: const TextStyle(
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -122,8 +122,8 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
   TextField getUserIDField(String X_HINT) {
     var returnTextField = TextField(
       decoration: InputDecoration(
-        icon: const Icon(Icons.account_circle),
-        border: const OutlineInputBorder(),
+        icon: Icon(Icons.account_circle),
+        border: OutlineInputBorder(),
         hintText: X_HINT,
       ),
       onChanged: (String value) {
@@ -138,8 +138,8 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
   TextField getPasswordField(String X_HINT) {
     var returnTextField = TextField(
       decoration: InputDecoration(
-        icon: const Icon(Icons.password),
-        border: const OutlineInputBorder(),
+        icon: Icon(Icons.password),
+        border: OutlineInputBorder(),
         hintText: X_HINT,
       ),
       obscureText: true,
