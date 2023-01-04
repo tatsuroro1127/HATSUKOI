@@ -18,6 +18,10 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
   String input_Password = "";
   // 登録・ログインに関する情報を表示
   String infoText = "";
+  //テキストボックス操作変数_メールアドレス
+  final mailaddressController = TextEditingController();
+  //テキストボックス操作変数_パスワード
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +91,7 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                               } catch (e) {
                                 // ログインに失敗した場合
                                 setState(() {
-                                  infoText = "ログインNG：${e.toString()}";
+                                  infoText = ME001;
                                 });
                               }
                             }
@@ -102,18 +106,31 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                               decoration: TextDecoration.underline,
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    // ユーザー登録画面へ遷移
-                                    builder: (context) =>
-                                        const widget_htki002_Register()));
+                          onPressed: () async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                // ユーザー登録画面へ遷移
+                                builder: (context) {
+                                  return widget_htki002_Register();
+                                },
+                              ),
+                            );
+                            if (result == true) {
+                              setState(() {
+                                mailaddressController.clear();
+                                passwordController.clear();
+                                infoText = MD101;
+                              });
+                            }
                           },
                         ),
                       ],
                     ),
-                    Text(infoText),
+                    Text(
+                      infoText,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),
@@ -132,10 +149,11 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
   TextField getUserIDField(String X_HINT) {
     var returnTextField = TextField(
       decoration: InputDecoration(
-        icon: Icon(Icons.account_circle),
-        border: OutlineInputBorder(),
+        icon: const Icon(Icons.account_circle),
+        border: const OutlineInputBorder(),
         hintText: X_HINT,
       ),
+      controller: mailaddressController,
       onChanged: (String value) {
         setState(() {
           input_mailAddress = value;
@@ -148,10 +166,11 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
   TextField getPasswordField(String X_HINT) {
     var returnTextField = TextField(
       decoration: InputDecoration(
-        icon: Icon(Icons.password),
-        border: OutlineInputBorder(),
+        icon: const Icon(Icons.password),
+        border: const OutlineInputBorder(),
         hintText: X_HINT,
       ),
+      controller: passwordController,
       obscureText: true,
       onChanged: (String value) {
         setState(() {

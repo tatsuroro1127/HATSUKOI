@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../dictionary/dictionary_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class widget_htki002_Register extends StatefulWidget {
   const widget_htki002_Register({super.key});
@@ -42,7 +41,7 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
                   ),
                   style: ElevatedButton.styleFrom(),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(false);
                   },
                 ),
               )
@@ -87,13 +86,13 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
 
                             // 登録したユーザー情報
                             final User user = result.user!;
-                            setState(() {
-                              infoText = "登録OK：${user.email}";
-                            });
+
+                            //画面をポップする
+                            Navigator.of(context).pop(true);
                           } catch (e) {
                             // 登録に失敗した場合
                             setState(() {
-                              infoText = ME001;
+                              infoText = ME003;
                             });
                           }
                         }
