@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments, non_constant_identifier_names, camel_case_types
+
 import 'package:flutter/material.dart';
 import '../../dictionary/dictionary_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,9 +47,9 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //「ログイン」テキスト
-                    Text(
+                    const Text(
                       MD004,
-                      style: const TextStyle(
+                      style: TextStyle(
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -67,7 +69,7 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                       children: [
                         //「ログイン」ボタン
                         ElevatedButton(
-                          child: Text(MD004),
+                          child: const Text(MD004),
                           onPressed: () async {
                             if (input_mailAddress == "" ||
                                 input_Password == "") {
@@ -100,9 +102,9 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                         const SizedBox(width: 20),
                         //「ユーザー登録」ボタン
                         TextButton(
-                          child: Text(
+                          child: const Text(
                             MD003,
-                            style: const TextStyle(
+                            style: TextStyle(
                               decoration: TextDecoration.underline,
                             ),
                           ),
@@ -112,7 +114,7 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                               MaterialPageRoute(
                                 // ユーザー登録画面へ遷移
                                 builder: (context) {
-                                  return widget_htki002_Register();
+                                  return const widget_htki002_Register();
                                 },
                               ),
                             );
