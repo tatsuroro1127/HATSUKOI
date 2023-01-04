@@ -65,24 +65,31 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                         ElevatedButton(
                           child: Text(MD004),
                           onPressed: () async {
-                            try {
-                              // メール/パスワードでログイン
-                              final FirebaseAuth auth = FirebaseAuth.instance;
-                              final UserCredential result =
-                                  await auth.signInWithEmailAndPassword(
-                                email: input_mailAddress,
-                                password: input_Password,
-                              );
-                              // ログインに成功した場合
-                              final User user = result.user!;
+                            if (input_mailAddress == "" ||
+                                input_Password == "") {
                               setState(() {
-                                infoText = "ログインOK：${user.email}";
+                                infoText = ME002;
                               });
-                            } catch (e) {
-                              // ログインに失敗した場合
-                              setState(() {
-                                infoText = "ログインNG：${e.toString()}";
-                              });
+                            } else {
+                              try {
+                                // メール/パスワードでログイン
+                                final FirebaseAuth auth = FirebaseAuth.instance;
+                                final UserCredential result =
+                                    await auth.signInWithEmailAndPassword(
+                                  email: input_mailAddress,
+                                  password: input_Password,
+                                );
+                                // ログインに成功した場合
+                                final User user = result.user!;
+                                setState(() {
+                                  infoText = "ログインOK：${user.email}";
+                                });
+                              } catch (e) {
+                                // ログインに失敗した場合
+                                setState(() {
+                                  infoText = "ログインNG：${e.toString()}";
+                                });
+                              }
                             }
                           },
                         ),

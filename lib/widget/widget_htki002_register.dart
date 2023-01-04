@@ -12,7 +12,7 @@ class widget_htki002_Register extends StatefulWidget {
 
 class _widget_htki002_register extends State<widget_htki002_Register> {
   // 入力されたメールアドレス
-  String input_userID = "";
+  String input_mailAddress = "";
   // 入力されたパスワード
   String input_Password = "";
   // 登録・ログインに関する情報を表示
@@ -69,31 +69,40 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
                     const SizedBox(height: 20),
                     getPasswordField(MD002),
                     ElevatedButton(
-                      child: Text(MD003),
+                      child: const Text(MD003),
                       onPressed: () async {
-                        try {
-                          // メール/パスワードでユーザー登録
-                          final FirebaseAuth auth = FirebaseAuth.instance;
-                          final UserCredential result =
-                              await auth.createUserWithEmailAndPassword(
-                            email: input_userID,
-                            password: input_Password,
-                          );
+                        if (input_mailAddress == "" || input_Password == "") {
+                          setState(() {
+                            infoText = ME002;
+                          });
+                        } else {
+                          try {
+                            // メール/パスワードでユーザー登録
+                            final FirebaseAuth auth = FirebaseAuth.instance;
+                            final UserCredential result =
+                                await auth.createUserWithEmailAndPassword(
+                              email: input_mailAddress,
+                              password: input_Password,
+                            );
 
-                          // 登録したユーザー情報
-                          final User user = result.user!;
-                          setState(() {
-                            infoText = "登録OK：${user.email}";
-                          });
-                        } catch (e) {
-                          // 登録に失敗した場合
-                          setState(() {
-                            infoText = "登録NG：${e.toString()}";
-                          });
+                            // 登録したユーザー情報
+                            final User user = result.user!;
+                            setState(() {
+                              infoText = "登録OK：${user.email}";
+                            });
+                          } catch (e) {
+                            // 登録に失敗した場合
+                            setState(() {
+                              infoText = ME001;
+                            });
+                          }
                         }
                       },
                     ),
-                    Text(infoText),
+                    Text(
+                      infoText,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),
@@ -118,7 +127,7 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
       ),
       onChanged: (String value) {
         setState(() {
-          input_userID = value;
+          input_mailAddress = value;
         });
       },
     );
