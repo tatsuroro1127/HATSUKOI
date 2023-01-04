@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../dictionary/dictionary_const.dart';
+import '../../dictionary/dictionary_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'widget_htki002_register.dart';
