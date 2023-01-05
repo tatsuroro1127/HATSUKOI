@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'firebase_options.dart';
+import 'package:wakelock/wakelock.dart';
 
 import 'dictionary/dictionary_const.dart';
 
@@ -15,7 +17,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Wakelock.enable();
   //アプリを実行
+
   runApp(const ApplicationHatsukoi());
 }
 

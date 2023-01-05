@@ -1,6 +1,7 @@
 // ignore_for_file: slash_for_doc_comments, non_constant_identifier_names, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:hatsukoi/widget_MCH_func/widget_htki003_mypage.dart';
 import '../../dictionary/dictionary_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -88,7 +89,15 @@ class _widget_htki001_Login extends State<widget_htki001_Login> {
                                 // ログインに成功した場合
                                 final User user = result.user!;
                                 setState(() {
-                                  infoText = "ログインOK：${user.email}";
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      // ユーザー登録画面へ遷移
+                                      builder: (context) {
+                                        return const widget_htki003_mypage();
+                                      },
+                                    ),
+                                  );
                                 });
                               } catch (e) {
                                 // ログインに失敗した場合
