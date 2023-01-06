@@ -1,6 +1,6 @@
 # hatsukoi
 
-A new Flutter project.
+マッチングアプリ構想
 
 ## Getting Started
 
