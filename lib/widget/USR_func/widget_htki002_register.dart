@@ -91,10 +91,10 @@ class _widget_htki002_register extends State<widget_htki002_Register> {
 
                             //画面をポップする
                             Navigator.of(context).pop(true);
-                          } catch (e) {
+                          } on FirebaseAuthException catch (e) {
                             // 登録に失敗した場合
                             setState(() {
-                              infoText = ME003;
+                              infoText = getErrorMsgOnFireBase(e.code);
                             });
                           }
                         }

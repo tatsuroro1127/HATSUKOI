@@ -14,7 +14,7 @@ class widget_htki003_mypage extends StatefulWidget {
 }
 
 class _widget_htki003_mypage extends State<widget_htki003_mypage> {
-  late File _image;
+  File? _image;
   final picker = ImagePicker();
 
   @override
@@ -57,11 +57,21 @@ class _widget_htki003_mypage extends State<widget_htki003_mypage> {
           shape: BoxShape.circle,
           color: Colors.blue,
         ),
-        // child: Image.file(_image),
+        // child: Image.file(_image!),
+        // child: ,
       ),
     );
     return button;
   }
+
+  // Widget getImageFile(){
+  //   if(_image!){
+
+  //   }else{
+  //     return null;
+  //   }
+
+  // }
 
   Future _getImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
